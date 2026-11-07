@@ -9,3 +9,4 @@ scikit-image
 matplotlib
 Pillow
 psutil
+gunicorn
