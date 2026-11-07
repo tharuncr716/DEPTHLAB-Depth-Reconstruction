@@ -1,0 +1,11 @@
+
+Flask
+torch
+numpy
+opencv-python
+h5py
+pandas
+scikit-image
+matplotlib
+Pillow
+psutil

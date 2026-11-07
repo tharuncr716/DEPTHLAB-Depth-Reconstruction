@@ -1,0 +1,36 @@
+
+# Python environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE files
+.idea/
+.vscode/
+
+# Dataset files
+dataset/processed/*.h5
+dataset/raw/
+*.mat
+
+# Temporary files and logs
+*.log
+*.tmp
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Temporary Flask uploads and generated results
+webapp/static/results/
+uploads/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db

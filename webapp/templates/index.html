@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DEPTHLAB | AI Depth Reconstruction Studio</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="fa-solid fa-cube"></i>
+        </div>
+
+        <div class="brand-text">
+            <h2>DEPTH<span>LAB</span></h2>
+            <p>AI RECONSTRUCTION STUDIO</p>
+        </div>
+    </div>
+
+    <div class="nav-right">
+        <span class="system-status">
+            <span class="status-dot"></span>
+            SYSTEM READY
+        </span>
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                COMPUTER VISION PROJECT
+            </div>
+
+            <h1>
+                See Beyond<br>
+                <span class="gradient-text">The Pixels.</span>
+            </h1>
+
+            <p class="hero-description">
+                Transform low-resolution depth maps into refined,
+                high-quality depth representations using classical
+                computer vision, deep learning and hybrid refinement.
+            </p>
+
+            <div class="hero-tags">
+                <span><i class="fa-solid fa-layer-group"></i> Depth Upsampling</span>
+                <span><i class="fa-solid fa-brain"></i> CNN Intelligence</span>
+                <span><i class="fa-solid fa-crosshairs"></i> Edge Preservation</span>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="visual-card">
+
+                <div class="visual-top">
+                    <span>DEPTH PROCESSING</span>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+
+                <div class="depth-illustration">
+                    <div class="depth-ring ring-one"></div>
+                    <div class="depth-ring ring-two"></div>
+                    <div class="depth-ring ring-three"></div>
+
+                    <div class="depth-center">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                </div>
+
+                <div class="visual-bottom">
+                    <div>
+                        <span class="visual-label">PROCESSING ENGINE</span>
+                        <strong>AI + COMPUTER VISION</strong>
+                    </div>
+
+                    <div class="visual-indicator">
+                        <span></span>
+                        ACTIVE
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE CARDS -->
+
+    <section class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon purple">
+                <i class="fa-solid fa-up-down-left-right"></i>
+            </div>
+
+            <div>
+                <h3>2× / 4× / 8×</h3>
+                <p>Upsampling Factors</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon blue">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div>
+                <h3>CNN Model</h3>
+                <p>Deep Learning Refinement</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon cyan">
+                <i class="fa-solid fa-filter"></i>
+            </div>
+
+            <div>
+                <h3>Edge Aware</h3>
+                <p>Boundary Preservation</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- UPLOAD SECTION -->
+
+    <section class="workspace panel">
+
+        <div class="section-heading">
+
+            <div>
+                <div class="section-number">01 / INPUT CONFIGURATION</div>
+
+                <h2>Upload Your Inputs</h2>
+
+                <p>
+                    Provide an RGB image and its corresponding
+                    low-resolution depth map.
+                </p>
+            </div>
+
+            <div class="section-icon">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+
+        </div>
+
+
+        <form method="POST"
+              enctype="multipart/form-data"
+              id="reconstructionForm">
+
+            <div class="upload-grid">
+
+                <!-- RGB IMAGE -->
+
+                <div class="upload-box">
+
+                    <div class="upload-heading">
+                        <div class="upload-icon">
+                            <i class="fa-regular fa-image"></i>
+                        </div>
+
+                        <div>
+                            <h3>RGB Image</h3>
+                            <p>High-resolution color image</p>
+                        </div>
+                    </div>
+
+                    <label for="rgb" class="drop-area">
+
+                        <input type="file"
+                               id="rgb"
+                               name="rgb"
+                               accept="image/*"
+                               required>
+
+                        <div class="drop-content">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <h4>Choose RGB Image</h4>
+
+                            <p>Click here to browse your files</p>
+
+                            <span class="file-format">
+                                JPG · JPEG · PNG
+                            </span>
+                        </div>
+
+                        <div class="selected-file" id="rgbFileName">
+                            No file selected
+                        </div>
+
+                    </label>
+
+                </div>
+
+
+                <!-- DEPTH IMAGE -->
+
+                <div class="upload-box">
+
+                    <div class="upload-heading">
+                        <div class="upload-icon depth-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+
+                        <div>
+                            <h3>Low-Resolution Depth</h3>
+                            <p>Corresponding depth representation</p>
+                        </div>
+                    </div>
+
+                    <label for="depth" class="drop-area">
+
+                        <input type="file"
+                               id="depth"
+                               name="depth"
+                               accept="image/*"
+                               required>
+
+                        <div class="drop-content">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+
+                            <h4>Choose Depth Map</h4>
+
+                            <p>Click here to browse your files</p>
+
+                            <span class="file-format">
+                                PNG · TIFF · JPG
+                            </span>
+                        </div>
+
+                        <div class="selected-file" id="depthFileName">
+                            No file selected
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIGURATION -->
+
+            <div class="configuration">
+
+                <div class="config-title">
+                    <span class="section-number">02 / MODEL SETTINGS</span>
+                    <h3>Reconstruction Configuration</h3>
+                </div>
+
+                <div class="config-grid">
+
+                    <div class="form-group">
+
+                        <label for="factor">
+                            <i class="fa-solid fa-expand"></i>
+                            Upsampling Scale
+                        </label>
+
+                        <select name="factor" id="factor">
+
+                            <option value="2">2× Upsampling</option>
+
+                            <option value="4" selected>
+                                4× Upsampling
+                            </option>
+
+                            <option value="8">8× Upsampling</option>
+
+                        </select>
+
+                        <small>
+                            Select the desired output resolution factor.
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="method">
+                            <i class="fa-solid fa-microchip"></i>
+                            Reconstruction Method
+                        </label>
+
+                        <select name="method" id="method">
+
+                            <option value="classical">
+                                Classical - Joint Bilateral
+                            </option>
+
+                            <option value="cnn">
+                                Deep Learning - CNN
+                            </option>
+
+                            <option value="hybrid" selected>
+                                Hybrid - CNN + Joint Bilateral
+                            </option>
+
+                        </select>
+
+                        <small>
+                            Choose the depth refinement algorithm.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <div class="submit-section">
+
+                <div class="submit-info">
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <span>
+                        Ensure that both uploaded inputs correspond
+                        to the same scene.
+                    </span>
+                </div>
+
+                <button type="submit" id="submitButton">
+
+                    <span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        Reconstruct Depth Map
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- ERROR MESSAGE -->
+
+    {% if error %}
+
+    <section class="error-panel">
+
+        <div class="error-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <div>
+            <h3>Reconstruction Error</h3>
+            <p>{{ error }}</p>
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- RESULTS SECTION -->
+
+    {% if result %}
+
+    <section class="results-section panel">
+
+        <div class="section-heading">
+
+            <div>
+                <div class="section-number">03 / OUTPUT ANALYSIS</div>
+
+                <h2>Reconstruction Results</h2>
+
+                <p>
+                    Your depth map has been processed successfully.
+                    Review the generated output below.
+                </p>
+            </div>
+
+            <div class="result-success">
+                <i class="fa-solid fa-circle-check"></i>
+                COMPLETED
+            </div>
+
+        </div>
+
+
+        <!-- RESULT DETAILS -->
+
+        <div class="result-details">
+
+            <div class="result-detail-card">
+
+                <span>RECONSTRUCTION METHOD</span>
+
+                <strong>{{ result.method }}</strong>
+
+            </div>
+
+            <div class="result-detail-card">
+
+                <span>UPSAMPLING FACTOR</span>
+
+                <strong>{{ result.factor }}×</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE COMPARISON -->
+
+        <div class="comparison-heading">
+
+            <h3>Visual Comparison</h3>
+
+            <span>INPUT vs OUTPUT</span>
+
+        </div>
+
+
+        <div class="comparison-grid">
+
+            <div class="image-card">
+
+                <div class="image-card-heading">
+
+                    <div>
+                        <span class="image-label">01</span>
+                        <h4>RGB Input</h4>
+                    </div>
+
+                    <span class="image-type">ORIGINAL</span>
+
+                </div>
+
+                <div class="image-container">
+
+                    <img src="{{ result.input }}"
+                         alt="Original RGB input">
+
+                </div>
+
+                <p class="image-caption">
+                    Original scene provided as visual guidance.
+                </p>
+
+            </div>
+
+
+            <div class="image-card output-card">
+
+                <div class="image-card-heading">
+
+                    <div>
+                        <span class="image-label">02</span>
+                        <h4>Reconstructed Depth</h4>
+                    </div>
+
+                    <span class="image-type output-type">PROCESSED</span>
+
+                </div>
+
+                <div class="image-container">
+
+                    <img src="{{ result.output }}"
+                         alt="Reconstructed depth map">
+
+                </div>
+
+                <p class="image-caption">
+                    Refined depth representation generated by the model.
+                </p>
+
+                <a href="{{ result.output }}"
+                   download
+                   class="download-button">
+
+                    <i class="fa-solid fa-download"></i>
+                    Download Depth Map
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="result-note">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <p>
+                Evaluation metrics such as RMSE, MAE, PSNR and SSIM
+                require a corresponding ground-truth depth map.
+            </p>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- ABOUT SECTION -->
+
+    <section class="about-section">
+
+        <div class="about-heading">
+            <span class="section-number">ABOUT THE PROJECT</span>
+            <h2>Three Approaches. One Goal.</h2>
+        </div>
+
+        <div class="approach-grid">
+
+            <div class="approach-card">
+                <div class="approach-icon purple">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+
+                <h3>Classical Vision</h3>
+
+                <p>
+                    Traditional interpolation and edge-aware
+                    filtering techniques for depth refinement.
+                </p>
+            </div>
+
+
+            <div class="approach-card">
+                <div class="approach-icon blue">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <h3>Deep Learning</h3>
+
+                <p>
+                    CNN-based refinement using RGB guidance
+                    and upsampled depth information.
+                </p>
+            </div>
+
+
+            <div class="approach-card">
+                <div class="approach-icon cyan">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+
+                <h3>Hybrid Approach</h3>
+
+                <p>
+                    Combines CNN predictions with joint bilateral
+                    filtering for edge-aware refinement.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        <i class="fa-solid fa-cube"></i>
+        DEPTHLAB
+    </div>
+
+    <p>
+        Edge-Preserving Depth Map Upsampling and Refinement Challenge
+    </p>
+
+    <span>Computer Vision · Deep Learning · Image Processing</span>
+
+</footer>
+
+
+<!-- SIMPLE FRONTEND INTERACTIONS -->
+
+<script>
+
+    // Display selected RGB filename
+
+    document.getElementById("rgb").addEventListener("change", function () {
+
+        const fileName = this.files.length
+            ? this.files[0].name
+            : "No file selected";
+
+        document.getElementById("rgbFileName").textContent = fileName;
+
+    });
+
+
+    // Display selected depth filename
+
+    document.getElementById("depth").addEventListener("change", function () {
+
+        const fileName = this.files.length
+            ? this.files[0].name
+            : "No file selected";
+
+        document.getElementById("depthFileName").textContent = fileName;
+
+    });
+
+
+    // Loading effect when form is submitted
+
+    document.getElementById("reconstructionForm")
+        .addEventListener("submit", function () {
+
+            const button = document.getElementById("submitButton");
+
+            button.disabled = true;
+
+            button.innerHTML = `
+                <span>
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    Processing Depth Map...
+                </span>
+            `;
+
+        });
+
+</script>
+
+</body>
+</html>
